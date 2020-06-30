@@ -10,7 +10,7 @@ const format = new Intl.NumberFormat("ru-RU",
 function statement(invoice, plays) {
     let totalAmount = 0;
     let volumeCredits = 0;
-    let result = `Счет для ${invoice.customer}\n`;
+    let result = `Счет для ${invoice.customer}:\n`;
     
     for (let perf of invoice.performances) {
         const play = plays[perf.playId];
@@ -35,11 +35,11 @@ function statement(invoice, plays) {
 
         // Вывод строки счета
         thisAmount = format(thisAmount / 100)
-        result += ` ${play.name}: ${thisAmount} (${perf.audience} мест)\n`;
+        result += `\t${play.name}: ${thisAmount} (${perf.audience} мест)\n`;
     }
 
     totalAmount = format(totalAmount/100);
-    result += `Итого с вас ${totalAmount}\n`;
+    result += `\nИтого с вас ${totalAmount}\n`;
     result += `Вы заработали ${volumeCredits} бонусов\n`;
     return result;
 }

@@ -1,2 +1,1 @@
-let result = statement(invoices, plays);
-console.log(result);
+document.getElementById('result').innerText = statement(invoices, plays);
